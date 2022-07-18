@@ -1,21 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package taller11;
 
-/**
- *
- * @author reroes
- */
+import java.util.ArrayList;
+
+import Carta.Cuenta;
+import Carta.Menu;
+import Menus.MenuCarta;
+import Menus.MenuDia;
+import Menus.MenuEconomico;
+import Menus.MenuNino;
+
 public class Taller11 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        ArrayList<Menu> InventarioCarta = new ArrayList<>();
+
+        MenuNino Ninos1 = new MenuNino("HOT DOG ", 1.25, 2.00, 2.50);
+        MenuNino Ninos2 = new MenuNino("salchipapa", 1.75, 0.50, 2.00);
+
+        MenuEconomico Economico1 = new MenuEconomico("Combo económico de "
+                + "(hamburguesa + paspas + hotdog + refresco)", 5 , 10);
+
+        MenuDia DiaMenu = new MenuDia("Panceta a la Parrilla ", 5, 7.50 ,20.50 );
+
+        MenuCarta CartaMenu = new MenuCarta("Costillas ", 7., 5, 8 , 10 );
+
+        InventarioCarta.add(Ninos1);
+        InventarioCarta.add(Ninos2);
+        InventarioCarta.add(Economico1);
+        InventarioCarta.add(DiaMenu);
+        InventarioCarta.add(CartaMenu);
+
+        for (int i = 0; i < InventarioCarta.size(); i++) {
+            InventarioCarta.get(i).establecerValorMenu();
+        }
+
+        Cuenta cuenta = new Cuenta ("JAVIER JACOME ", 12, InventarioCarta);
+        cuenta.establecerSubtotal();
+        cuenta.establecerTotal();
+
+        System.out.println(cuenta);
+
     }
-    
+
 }
